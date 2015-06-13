@@ -3,16 +3,22 @@
 <ul>
   <% @links.each do |link| %>
     <li> <%= link_to link.body, link %>
-        <small class="small_username"> <%= link_to link.user.name, link.user %>
-          |
-          <%= link_to link.board.name, link.board, class: "small_board_name" %>
-          |
-          comments: <%= link.comments.count %>
-          |
-          upvotes: <%= link.votes.count %>
-          |
-          downvotes: <%= link.downvotes.count %>
-        </small>
+      <small class="small_username"> <%= link_to link.user.name, link.user %>
+        |
+        <%= link_to link.board.name, link.board, class: "small_board_name" %>
+        |
+        comments: <%= link.comments.count %>
+        |
+        upvotes: <%= link.votes.count %>
+        |
+        downvotes: <%= link.downvotes.count %>
+        |
+        <% if link.votes.count == 0 && link.downvotes.count == 0 %>
+        no votes yet
+        <% else %>
+          <%= (link.votes.count).percent_of(link.votes.count + link.downvotes.count).round(2) %>% green
+        <% end %>
+      </small>
     </li>
   <% end %>
 </ul>
