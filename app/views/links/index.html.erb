@@ -16,7 +16,7 @@
         <% if link.votes.count == 0 && link.downvotes.count == 0 %>
         no votes yet
         <% else %>
-          <%= (link.votes.count).percent_of(link.votes.count + link.downvotes.count).round(2) %>% green
+          <%= (link.votes.count).percent_of(link.votes.count + link.downvotes.count).round %>% green
         <% end %>
       </small>
     </li>
