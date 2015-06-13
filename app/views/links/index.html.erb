@@ -1,9 +1,11 @@
 <h2>All Links</h2>
 
-<% @links.each do |link| %>
-  <p> <%= link_to link.body, link %>
-      <small class="small_username"> <%= link_to link.user.name, link.user %> </small>
-      <small class="small_board_name"> <%= link_to link.board.name, link.board %>
-      </small>
-  </p>
-<% end %>
+<ul>
+  <% @links.each do |link| %>
+    <li> <%= link_to link.body, link %>
+        <small class="small_username"> <%= link_to link.user.name, link.user %> </small>
+        <small class="small_board_name"> <%= link_to link.board.name, link.board %>
+        </small>
+    </li>
+  <% end %>
+</ul>

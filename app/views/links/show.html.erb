@@ -5,7 +5,7 @@
   <footer>
     <div class="actions">
       <%= link_to 'All Links',links_path %>
-      <% if logged_in? %>
+      <% if @link.user_id == session[:user_id] %>
         <%= link_to "Edit", edit_link_path(@link) %>
       <% end %>
      </div>

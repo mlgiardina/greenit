@@ -1,0 +1,15 @@
+<%= form_for(@link) do |f| %>
+  <%= f.hidden_field :user_id, value: session[:user_id] %>
+  <fieldset>
+  <legend>Body</legend>
+  <%= f.text_field :body, placeholder: "www.nytimes.com"%>
+  </fieldset>
+
+
+  <fieldset>
+  <legend>Board</legend>
+  <%= f.select :board_id, Board.all.map { |board| [board.name, board.id] } %>
+  </fieldset>
+
+  <p><%= f.submit "Publish Link" %></p>
+<% end %>

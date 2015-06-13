@@ -8,6 +8,7 @@ class BoardsController < ApplicationController
 
   def show
     @board = Board.find(params[:id])
+    @link = Link.new
   end
 
   def create

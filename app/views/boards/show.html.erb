@@ -1,0 +1,12 @@
+<h2> <%= @board.name %> </h2>
+<ul>
+  <% @board.links.each do |link| %>
+    <li> <%= link_to link.body, link %> | comments: <%= link.comments.count %> </li>
+  <% end %>
+
+</ul>
+
+<hr>
+
+<h3>Add New Link</h3>
+<%= render 'shared/link', locals: { link: @link } %>

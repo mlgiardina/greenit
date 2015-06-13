@@ -11,18 +11,20 @@
     <h1> <%= link_to "greenit", root_path %> </h1>
     <nav>
       |
-      <%= link_to 'New Link', new_link_path %>
+      <%= link_to "New Link", new_link_path %>
       |
-      <%= link_to 'Links', links_path %>
+      <%= link_to "Boards", boards_path %>
       |
-      <%= link_to 'About', about_path %>
+      <%= link_to "Links", links_path %>
       |
-      <%= link_to 'Sign Up', new_user_path %>
+      <%= link_to "About", about_path %>
+      |
+      <%= link_to "Sign Up", new_user_path %>
       |
       <% if logged_in? %>
-        <%= link_to 'Logout', logout_path %>
+        <%= link_to "Logout", logout_path %>
       <% else %>
-        <%= link_to 'Login', login_path %>
+        <%= link_to "Login", login_path %>
       <% end %>
       |
     </nav>
