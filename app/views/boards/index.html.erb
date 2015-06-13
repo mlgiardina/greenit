@@ -1,0 +1,14 @@
+<h2>greenit boards</h2>
+<% @boards.each do |board| %>
+  <p><%= link_to board.name, board %> | Links:<small> <%= board.links.count %> </small></p>
+<% end %>
+
+<hr>
+
+<h4>Create New Board</h4>
+<%= form_for(@board) do |f| %>
+  <p>
+  <%= f.label :name, "Board Name" %> <%= f.text_field :name %>
+  </p>
+  <p> <%= f.submit "Create Board" %> </p>
+<% end %>

@@ -1,9 +1,11 @@
 class LinksController < ApplicationController
   def index
+    authenticate_user!
     @links = Link.all
   end
 
   def show
+    authenticate_user!
     @link = Link.find(params[:id])
     @comment = Comment.new
   end

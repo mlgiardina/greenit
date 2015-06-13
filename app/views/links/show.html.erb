@@ -15,13 +15,6 @@
 <section class="comments">
   <h3>Comments (<%= @link.comments.count %>) </h3>
   <hr>
-  <%= form_for(@comment) do |f| %>
-    <%= f.hidden_field :link_id, value: @link.id %>
-    <%= f.hidden_field :user_id, value: session[:user_id] %>
-    <p> <%= f.label :body%> <%= f.text_area :body %> </p>
-    <p> <%= f.submit "New Comment" %> </p>
-  <% end %>
-  <hr>
   <ul>
     <% @link.comments.each do |comment| %>
       <li>
@@ -30,5 +23,13 @@
       </li>
     <% end %>
   </ul>
+  <hr>
+  <h4>Comment on this</h4>
+  <%= form_for(@comment) do |f| %>
+    <%= f.hidden_field :link_id, value: @link.id %>
+    <%= f.hidden_field :user_id, value: session[:user_id] %>
+    <p> <%= f.label :body%> <%= f.text_area :body %> </p>
+    <p> <%= f.submit "New Comment" %> </p>
+  <% end %>
 </section>
 
