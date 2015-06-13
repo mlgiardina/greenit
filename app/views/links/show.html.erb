@@ -1,0 +1,34 @@
+<article>
+  <p><%= @link.body %></p>
+  <small> <%= @link.board.name %> </small>
+  <small> <%= @link.user.name %> </small>
+  <footer>
+    <div class="actions">
+      <%= link_to 'All Links',links_path %>
+      <% if logged_in? %>
+        <%= link_to "Edit", edit_link_path(@link) %>
+      <% end %>
+     </div>
+  </footer>
+</article>
+
+<section class="comments">
+  <h3>Comments (<%= @link.comments.count %>) </h3>
+  <hr>
+  <%= form_for(@comment) do |f| %>
+    <%= f.hidden_field :link_id, value: @link.id %>
+    <%= f.hidden_field :user_id, value: session[:user_id] %>
+    <p> <%= f.label :body%> <%= f.text_area :body %> </p>
+    <p> <%= f.submit "New Comment" %> </p>
+  <% end %>
+  <hr>
+  <ul>
+    <% @link.comments.each do |comment| %>
+      <li>
+        <strong><%= comment.user.name %> </strong>:
+        <%= comment.body %>
+      </li>
+    <% end %>
+  </ul>
+</section>
+
