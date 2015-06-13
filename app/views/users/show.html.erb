@@ -1,4 +1,50 @@
 <h3><%= @user.name%> </h3>
-<% @user.links.each do |link| %>
-  <p><%= link_to link.body, link %> | comments: <%= link.comments.count %> | upvotes: <%= link.votes.count %> | downvotes: <%= link.downvotes.count %> </p>
+<hr>
+<h4>links</h4>
+<ul>
+  <% @user.links.each do |link| %>
+    <li><%= link_to link.body, link %> | comments: <%= link.comments.count %> | upvotes: <%= link.votes.count %> | downvotes: <%= link.downvotes.count %> </li>
+  <% end %>
+</ul>
+<hr>
+<h4>comments by <%= @user.name %></h4>
+<ul>
+  <% @user.comments.each do |comment| %>
+    <li><%= link_to comment.body, { controller: "links", action: "show", id: comment.link_id } %> | upvotes: <%= comment.votes.count %> | downvotes: <%= comment.downvotes.count %> </li>
+  <% end %>
+</ul>
+<hr>
+<h4>upvoted links</h4>
+<ul>
+  <% @user.votes.each do |vote| %>
+    <% if vote.link_id %>
+      <li><%= link_to Link.find(vote.link_id).body, vote.link %> </li>
+    <% end %>
+  <% end %>
+</ul>
+<hr>
+<h4>downvoted links</h4>
+<ul>
+  <% @user.downvotes.each do |downvote| %>
+  <% if downvote.link_id %>
+    <li><%= link_to Link.find(downvote.link_id).body, downvote.link %> </li>
+  <% end %>
 <% end %>
+</ul>
+<h4>upvoted comments</h4>
+<ul>
+  <% @user.votes.each do |vote| %>
+    <% if vote.comment_id %>
+      <li><%= link_to Link.find(vote.comment.link_id).body, { controller: "links", action: "show", id: vote.comment.link_id } %> </li>
+    <% end %>
+  <% end %>
+</ul>
+<hr>
+<h4>downvoted comments</h4>
+<ul>
+  <% @user.downvotes.each do |downvote| %>
+  <% if downvote.comment %>
+    <li><%= link_to Link.find(downvote.comment.link_id).body, { controller: "links", action: "show", id: downvote.comment.link_id } %> </li>
+  <% end %>
+<% end %>
+</ul>

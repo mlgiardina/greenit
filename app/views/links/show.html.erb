@@ -2,14 +2,12 @@
   <p><%= @link.body %></p>
   <small> <%= @link.board.name %> </small>
   <small> <%= @link.user.name %> </small>
-  <p>
-    <small><%= link_to "upvote:", { controller: "votes", action: "create", vote: { user_id: session[:user_id], link_id: @link.id } }, method: "post" %>  <%= @link.votes.count %> </small>
-    <small> <%= link_to "downvote:", { controller: "downvotes", action: "create", downvote: { user_id: session[:user_id], link_id: @link.id } }, method: "post" %> <%= @link.downvotes.count %> </small>
-  </p>
+  <%= render 'shared/votes' %>
   <footer>
     <div class="actions">
       <%= link_to 'All Links', links_path %>
       <% if @link.user_id == session[:user_id] %>
+        |
         <%= link_to "Edit", edit_link_path(@link) %>
       <% end %>
      </div>
@@ -24,6 +22,10 @@
       <li>
         <strong><%= comment.user.name %> </strong>:
         <%= comment.body %>
+        |
+    <small><%= link_to "upvote:", { controller: "votes", action: "create", vote: { user_id: session[:user_id], comment_id: comment.id } }, method: "post" %>  <%= comment.votes.count %> </small>
+        |
+    <small> <%= link_to "downvote:", { controller: "downvotes", action: "create", downvote: { user_id: session[:user_id], comment_id: comment.id } }, method: "post" %> <%= comment.downvotes.count %> </small>
       </li>
     <% end %>
   </ul>

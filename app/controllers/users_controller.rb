@@ -15,6 +15,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @votes = @user.votes.pluck(:id)
   end
 
   def user_params
