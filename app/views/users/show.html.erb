@@ -1,0 +1,4 @@
+<h3><%= @user.name%> </h3>
+<% @user.links.each do |link| %>
+  <p><%= link_to link.body, link %> | comments: <%= link.comments.count %> | upvotes: <%= link.votes.count %> | downvotes: <%= link.downvotes.count %> </p>
+<% end %>
