@@ -1,7 +1,7 @@
 class LinksController < ApplicationController
   def index
     authenticate_user!
-    @links = Link.all
+    @links = Link.all.sort_by { |link| link.votes.count }.reverse
   end
 
   def show

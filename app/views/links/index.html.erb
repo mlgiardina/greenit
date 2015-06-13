@@ -3,8 +3,15 @@
 <ul>
   <% @links.each do |link| %>
     <li> <%= link_to link.body, link %>
-        <small class="small_username"> <%= link_to link.user.name, link.user %> </small>
-        <small class="small_board_name"> <%= link_to link.board.name, link.board %>
+        <small class="small_username"> <%= link_to link.user.name, link.user %>
+          |
+          <%= link_to link.board.name, link.board, class: "small_board_name" %>
+          |
+          comments: <%= link.comments.count %>
+          |
+          upvotes: <%= link.votes.count %>
+          |
+          downvotes: <%= link.downvotes.count %>
         </small>
     </li>
   <% end %>
