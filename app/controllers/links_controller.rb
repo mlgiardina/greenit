@@ -8,6 +8,8 @@ class LinksController < ApplicationController
     authenticate_user!
     @link = Link.find(params[:id])
     @comment = Comment.new
+    @upvote = Vote.new
+    @downvote = Downvote.new
   end
 
   def new

@@ -7,13 +7,19 @@ class VotesController < ApplicationController
 
   def create
     authenticate_user!
-    @vote = Vote.new
+    @vote = Vote.new(vote_params)
     if @vote.save
       redirect_to :back
     else
       flash[:alert] = "Error Occurred"
       redirect_to :back
     end
+  end
+
+  private
+
+  def vote_params
+    params.require(:vote).permit(:user_id, :comment_id, :link_id)
   end
 
 end
