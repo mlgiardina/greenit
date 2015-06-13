@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
 
   def create
+    authenticate_user!
     @comment = Comment.new(comment_params)
     if @comment.save
       redirect_to :back
