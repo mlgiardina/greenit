@@ -2,6 +2,8 @@
   <p><%= @link.body %></p>
   <small> <%= @link.board.name %> </small>
   <small> <%= @link.user.name %> </small>
+  <p>upvotes: <%= @link.votes.count %> </p>
+  <p>downvotes: <%= @link.downvotes.count %> </p>
   <footer>
     <div class="actions">
       <%= link_to 'All Links',links_path %>

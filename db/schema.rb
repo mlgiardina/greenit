@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150613163404) do
+ActiveRecord::Schema.define(version: 20150613194436) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,18 @@ ActiveRecord::Schema.define(version: 20150613163404) do
 
   add_index "comments", ["link_id"], name: "index_comments_on_link_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "downvotes", force: :cascade do |t|
+    t.integer  "comment_id"
+    t.integer  "user_id"
+    t.integer  "link_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "downvotes", ["comment_id"], name: "index_downvotes_on_comment_id", using: :btree
+  add_index "downvotes", ["link_id"], name: "index_downvotes_on_link_id", using: :btree
+  add_index "downvotes", ["user_id"], name: "index_downvotes_on_user_id", using: :btree
 
   create_table "links", force: :cascade do |t|
     t.integer  "board_id"
@@ -55,10 +67,8 @@ ActiveRecord::Schema.define(version: 20150613163404) do
     t.integer  "comment_id"
     t.integer  "user_id"
     t.integer  "link_id"
-    t.integer  "upvotes",    default: 0
-    t.integer  "downvotes",  default: 0
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "votes", ["comment_id"], name: "index_votes_on_comment_id", using: :btree
@@ -67,6 +77,9 @@ ActiveRecord::Schema.define(version: 20150613163404) do
 
   add_foreign_key "comments", "links"
   add_foreign_key "comments", "users"
+  add_foreign_key "downvotes", "comments"
+  add_foreign_key "downvotes", "links"
+  add_foreign_key "downvotes", "users"
   add_foreign_key "links", "boards"
   add_foreign_key "links", "users"
   add_foreign_key "votes", "comments"
