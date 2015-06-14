@@ -3,5 +3,5 @@
 <%= form_tag create_session_path do %>
   <p><%= label_tag :name, "Username", class: "label" %><%= text_field_tag :name %> </p>
   <p><%= label_tag :password, "Password", class: "label" %><%= password_field_tag :password %> </p>
-  <p>g<%= submit_tag "Log In", class: "submit-button" %> </p>
+  <p><%= submit_tag "Log In", class: "submit-button" %> </p>
 <% end %>
