@@ -1,4 +1,5 @@
 <p>
-  <small><%= link_to "upvote:", { controller: "votes", action: "create", vote: { user_id: session[:user_id], link_id: @link.id } }, method: "post" %>  <%= @link.votes.count %> </small>
-  <small> <%= link_to "downvote:", { controller: "downvotes", action: "create", downvote: { user_id: session[:user_id], link_id: @link.id } }, method: "post" %> <%= @link.downvotes.count %> </small>
+  <small><%= link_to "greenit:", { controller: "votes", action: "create", vote: { user_id: session[:user_id], link_id: @link.id } }, method: "post" %>  <%= @link.votes.count %> </small>
+  |
+  <small> <%= link_to "reddit:", { controller: "downvotes", action: "create", downvote: { user_id: session[:user_id], link_id: @link.id } }, method: "post" %> <%= @link.downvotes.count %> </small>
 </p>

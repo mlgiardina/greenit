@@ -8,9 +8,10 @@ class DownvotesController < ApplicationController
     authenticate_user!
     @downvote = Downvote.new(downvote_params)
     if @downvote.save
+      flash[:success] = "reddit recorded."
       redirect_to :back
     else
-      flash[:alert] = "Error Occurred"
+      flash[:danger] = "Error Occurred"
       redirect_to :back
     end
   end

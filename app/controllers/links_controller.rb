@@ -7,6 +7,7 @@ class LinksController < ApplicationController
   def show
     authenticate_user!
     @link = Link.find(params[:id])
+    @comments = Link.find(params[:id]).comments.sort_by { |comment| comment.votes.count }.reverse
     @comment = Comment.new
     @upvote = Vote.new
     @downvote = Downvote.new
@@ -21,9 +22,10 @@ class LinksController < ApplicationController
     authenticate_user!
     @link = Link.new(link_params)
     if @link.save
-      redirect_to @link, notice: "Link posted!"
+      flash[:success] = 'Link was published!'
+      redirect_to @link
     else
-      flash[:alert] = "Error Occurred"
+      flash[:danger] = "Error Occurred"
       render :new
     end
   end
@@ -37,9 +39,10 @@ class LinksController < ApplicationController
     authenticate_user!
     link = Link.find(params[:id])
     if link.update(link_params)
-      redirect_to link, notice: "Link updated!"
+      flash[:success] = 'Link was updated!'
+      redirect_to link
     else
-      flash[:alert] = "An error occurred"
+      flash[:danger] = "An error occurred"
       render :edit
     end
   end

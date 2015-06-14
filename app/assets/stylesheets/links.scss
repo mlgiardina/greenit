@@ -1,3 +1,29 @@
 // Place all the styles related to the Links controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.greenits {
+  color: green;
+}
+
+.reddits {
+  color: red;
+}
+
+.small_username {
+  color: orange;
+
+  &:hover{
+    color: blue;
+    text-decoration: none;
+  }
+}
+
+.small_board_name {
+  color: gray;
+
+  &:hover{
+    color: blue;
+    text-decoration: none;
+  }
+}

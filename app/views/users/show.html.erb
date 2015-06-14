@@ -3,18 +3,18 @@
 <h4>links</h4>
 <ul>
   <% @user.links.each do |link| %>
-    <li><%= link_to link.body, link %> | comments: <%= link.comments.count %> | upvotes: <%= link.votes.count %> | downvotes: <%= link.downvotes.count %> </li>
+    <li><%= link_to link.body, link %> | comments: <%= link.comments.count %> | greenits: <%= link.votes.count %> | reddits <%= link.downvotes.count %> </li>
   <% end %>
 </ul>
 <hr>
 <h4>comments by <%= @user.name %></h4>
 <ul>
   <% @user.comments.each do |comment| %>
-    <li><%= link_to comment.body, { controller: "links", action: "show", id: comment.link_id } %> | upvotes: <%= comment.votes.count %> | downvotes: <%= comment.downvotes.count %> </li>
+    <li><%= link_to comment.body, { controller: "links", action: "show", id: comment.link_id } %> | greenits: <%= comment.votes.count %> | reddits: <%= comment.downvotes.count %> </li>
   <% end %>
 </ul>
 <hr>
-<h4>upvoted links</h4>
+<h4>greened links</h4>
 <ul>
   <% @user.votes.each do |vote| %>
     <% if vote.link_id %>
@@ -23,7 +23,7 @@
   <% end %>
 </ul>
 <hr>
-<h4>downvoted links</h4>
+<h4>redded links</h4>
 <ul>
   <% @user.downvotes.each do |downvote| %>
   <% if downvote.link_id %>
@@ -31,7 +31,8 @@
   <% end %>
 <% end %>
 </ul>
-<h4>upvoted comments</h4>
+<hr>
+<h4>greened comments</h4>
 <ul>
   <% @user.votes.each do |vote| %>
     <% if vote.comment_id %>
@@ -40,7 +41,7 @@
   <% end %>
 </ul>
 <hr>
-<h4>downvoted comments</h4>
+<h4>redded comments</h4>
 <ul>
   <% @user.downvotes.each do |downvote| %>
   <% if downvote.comment %>

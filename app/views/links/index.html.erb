@@ -3,15 +3,15 @@
 <ul>
   <% @links.each do |link| %>
     <li> <%= link_to link.body, link %>
-      <small class="small_username"> <%= link_to link.user.name, link.user %>
+      <small> <%= link_to link.user.name, link.user, class: "small_username" %>
         |
         <%= link_to link.board.name, link.board, class: "small_board_name" %>
         |
         comments: <%= link.comments.count %>
         |
-        upvotes: <%= link.votes.count %>
+        <span class="greenits">greenits:</span> <%= link.votes.count %>
         |
-        downvotes: <%= link.downvotes.count %>
+        <span class="reddits">reddits:</span> <%= link.downvotes.count class: "reddits" %>
         |
         <% if link.votes.count == 0 && link.downvotes.count == 0 %>
         no votes yet

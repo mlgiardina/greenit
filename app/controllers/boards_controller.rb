@@ -14,9 +14,10 @@ class BoardsController < ApplicationController
   def create
     @board = Board.new(board_params)
     if @board.save
-      redirect_to @board, notice: "Board Created"
+      flash[:success] = "Board was created!"
+      redirect_to @board
     else
-      flash[:alert] = "An error occurred."
+      flash[:danger] = "An error occurred."
       render :back
     end
   end

@@ -16,17 +16,17 @@
 </article>
 
 <section class="comments">
-  <h3>Comments (<%= @link.comments.count %>) </h3>
+  <h3>Comments (<%= @comments.count %>) </h3>
   <hr>
   <ul>
-    <% @link.comments.each do |comment| %>
+    <% @comments.each do |comment| %>
       <li>
         <strong><%= comment.user.name %> </strong>:
         <%= comment.body %>
         |
-    <small><%= link_to "upvote:", { controller: "votes", action: "create", vote: { user_id: session[:user_id], comment_id: comment.id } }, method: "post" %>  <%= comment.votes.count %> </small>
+    <small><%= link_to "greenit:", { controller: "votes", action: "create", vote: { user_id: session[:user_id], comment_id: comment.id } }, method: "post" %>  <%= comment.votes.count %> </small>
         |
-    <small> <%= link_to "downvote:", { controller: "downvotes", action: "create", downvote: { user_id: session[:user_id], comment_id: comment.id } }, method: "post" %> <%= comment.downvotes.count %> </small>
+    <small> <%= link_to "reddit:", { controller: "downvotes", action: "create", downvote: { user_id: session[:user_id], comment_id: comment.id } }, method: "post" %> <%= comment.downvotes.count %> </small>
       </li>
     <% end %>
   </ul>
