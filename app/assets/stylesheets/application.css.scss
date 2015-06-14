@@ -188,6 +188,14 @@ nav {
   margin-left: 5px;
   font-size: 20px;
 }
+
+.new-board-area {
+  margin-left: 10px;
+  background: $footer-links-color;
+  color: white;
+  border: 1px solid $text-body-color;
+}
+
 @import 'bootstrap-sprockets';
 // @import 'bootstrap';
 @import 'links';

@@ -1,16 +1,7 @@
 <h2>Edit Link</h2>
 <%= form_for(@link) do |f| %>
-  <fieldset>
-  <legend>Body</legend>
-  <%= f.text_field :body, placeholder: @link.body %>
-  </fieldset>
-
-
-  <fieldset>
-  <legend>Board</legend>
-  <%= f.select :board_id, Board.all.map { |board| [board.name, board.id] } %>
-  </fieldset>
-
-  <p><%= f.submit "Publish Link" %></p>
-
+  <p><%= f.label :body, "Body", class: "label"%></p>
+  <p><%= f.text_area :body, placeholder: @link.body, class: "comment-field" %> </p>
+  <p><%= f.label :board, "Board", class: "label"%><%= f.select :board_id, Board.all.map { |board| [board.name, board.id] } %> </p>
+  <p><%= f.submit "Publish Link", class: "submit-button" %></p>
 <% end %>

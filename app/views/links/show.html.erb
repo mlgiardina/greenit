@@ -32,7 +32,7 @@
       </li>
     <% end %>
   </ul>
-  <h3>Comment on this:</h3>
+  <h3>Comment on this</h3>
   <%= form_for(@comment) do |f| %>
     <%= f.hidden_field :link_id, value: @link.id %>
     <%= f.hidden_field :user_id, value: session[:user_id] %>

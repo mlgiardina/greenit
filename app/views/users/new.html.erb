@@ -1,7 +1,7 @@
 <h2>New User</h2>
 <%= form_for(@user) do |f| %>
-  <p> Username: <%= f.text_field :name %> </p>
-  <p> Password: <%= f.password_field :password %> </p>
-  <p> Confirm Password: <%= f.password_field :password_confirmation %> </p>
+  <p><%= f.label :name, "Username", class: "label" %><%= f.text_field :name, class: "new-board-area" %> </p>
+  <p><%= f.label :password, "Password", class: "label" %><%= f.password_field :password, class: "new-board-area" %> </p>
+  <p><%= f.label :password_confirmation, "Confirm Password", class: "label" %><%= f.password_field :password_confirmation, class: "new-board-area" %> </p>
   <%= f.submit "Create User" %>
   <% end %>
