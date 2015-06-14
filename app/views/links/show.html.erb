@@ -23,7 +23,7 @@
   <ul>
     <% @comments.each do |comment| %>
       <li>
-        <span class="small-username"><%= comment.user.name %> </span>:
+        <%=link_to comment.user.name, comment.user, class: "small-username" %>:
         <span class="comment-body"><%= comment.body %></span>
         |
     <small><%= link_to "greenit:", { controller: "votes", action: "create", vote: { user_id: session[:user_id], comment_id: comment.id } }, method: "post", class: "greenits" %>  <%= comment.votes.count %> </small>
