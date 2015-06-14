@@ -28,9 +28,8 @@
         <%= link_to "Login", login_path, class: "nav-links" %>
       <% end %>
       |
-    </nav>
     <% if @current_user %>
-      <p class="nav-user"><%= "#{@current_user.name}" %></p>
+      <p class="nav-user"><%= "#{@current_user.name}" %></p></nav>
     <% end %>
   </header>
   <div class='main-page'>

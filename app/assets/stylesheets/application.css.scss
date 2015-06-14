@@ -1,13 +1,18 @@
 $main-link-color: #76B295;
 $main-hover-color: #4A9470;
-$main-background-color: #418B67;
+$main-background-color: #69A88A;
+$small-username-color: #C7785D;
+$small-board-name-color: #72280F;
+$greenits-color: #1B6F12;
+$reddits-color: #8A1C21;
 
 header {
   p {
-    text-align: right;
     margin: 0 auto;
     padding-right: 15px;
     color: $main-link-color;
+    display: inline;
+    float: right;
   }
 }
 
@@ -60,13 +65,28 @@ nav {
   background: $main-background-color;
   margin: 0;
   min-height: 1000px;
+  font-family: Helvetica Neue;
 
   h2 {
-    margin: 0 auto;
+    margin-top: 0;
+    padding-left: 5px;
+    padding-top: 5px;
+    color: #0A4F2E;
+    font-size: 30px;
   }
 
   p {
     margin: 0 auto;
+  }
+}
+
+.main-link {
+  color: #A06F31;
+  text-decoration: none;
+
+  &:hover {
+    color: #F1C997;
+    text-decoration: none;
   }
 }
 @import 'bootstrap-sprockets';

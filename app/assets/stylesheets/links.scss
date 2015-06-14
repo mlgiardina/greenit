@@ -3,27 +3,31 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .greenits {
-  color: green;
+  color: $greenits-color;
+  font-weight: bolder;
 }
 
 .reddits {
-  color: red;
+  color: $reddits-color;
+  font-weight: bolder;
 }
 
 .small_username {
-  color: orange;
+  color: $small-username-color;
+  text-decoration: none;
 
   &:hover{
-    color: blue;
+    color: $small-board-name-color;
     text-decoration: none;
   }
 }
 
 .small_board_name {
-  color: gray;
+  color: $small-board-name-color;
+  text-decoration: none;
 
   &:hover{
-    color: blue;
+    color: $small-username-color;
     text-decoration: none;
   }
 }

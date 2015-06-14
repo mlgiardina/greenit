@@ -2,7 +2,7 @@
 
 <ul>
   <% @links.each do |link| %>
-    <li> <%= link_to link.body, link %>
+    <li> <%= link_to link.body, link, class: "main-link" %>
       <small> <%= link_to link.user.name, link.user, class: "small_username" %>
         |
         <%= link_to link.board.name, link.board, class: "small_board_name" %>
@@ -14,9 +14,14 @@
         <span class="reddits">reddits:</span> <%= link.downvotes.count class: "reddits" %>
         |
         <% if link.votes.count == 0 && link.downvotes.count == 0 %>
-        no votes yet
+        <span class="reddits">no votes yet</span>
         <% else %>
-          <%= (link.votes.count).percent_of(link.votes.count + link.downvotes.count).round %>% green
+          <% if (link.votes.count).percent_of(link.votes.count + link.downvotes.count).round > 50%>
+            <span class="greenits"><%= (link.votes.count).percent_of(link.votes.count + link.downvotes.count).round %>% green</span>
+          <% else %>
+            <span class="reddits"><%= (link.votes.count).percent_of(link.votes.count + link.downvotes.count).round %>% green</span>
+          <% end %>
+
         <% end %>
       </small>
     </li>
