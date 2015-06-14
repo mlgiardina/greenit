@@ -12,7 +12,7 @@
     <header class="main">
       <h1> <%= link_to "greenit", root_path, class: "logo" %> </h1>
       <nav class="nav-link-separators">
-        |
+
         <%= link_to "New Link", new_link_path, class: "nav-links" %>
         |
         <%= link_to "Boards", boards_path, class: "nav-links" %>
@@ -42,7 +42,7 @@
 
     </div>
     <footer class="footer">
-      <%= params.inspect if Rails.env.development? %>
+      <%= params.inspect if Rails.env.development? %><a href="https://matthew-giardina.herokuapp.com" class="nav-links"> Created by mlgiardina</a>
     </footer>
   </div>
 </body>

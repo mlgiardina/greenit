@@ -1,11 +1,12 @@
 $main-link-color: #76B295;
 $main-hover-color: #4A9470;
 $main-background-color: #69A88A;
-$small-username-color: #C7785D;
+$small-username-color: #8ACAC4;
 $small-board-name-color: #72280F;
 $greenits-color: #1B6F12;
 $reddits-color: #8A1C21;
 $header-color: #0A4F2E;
+$text-body-color: #133857;
 
 header {
   background: #0A4F2E;
@@ -42,6 +43,7 @@ body {
   font-weight: 500;
   line-height: 1.1;
   font-size: 42px;
+  margin-left: 5px;
 
   &:hover {
     color: $main-hover-color;
@@ -118,7 +120,7 @@ nav {
   text-decoration: none;
 
   &:hover {
-    color: darken( $greenits-color, 10% )
+    color: lighten( $greenits-color, 10% )
   }
 }
 
@@ -151,6 +153,15 @@ nav {
   }
 }
 
+.comment-body {
+    color: $text-body-color;
+    margin: 5px;
+    text-decoration: none;
+
+    &:hover {
+      color: lighten($text-body-color, 15%)
+    }
+  }
 
 
 @import 'bootstrap-sprockets';
