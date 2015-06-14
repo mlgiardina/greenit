@@ -1,7 +1,7 @@
 <h2>Login</h2>
 
 <%= form_tag create_session_path do %>
-  <p> Username: <%= text_field_tag :name %> </p>
-  <p> Password: <%= password_field_tag :password %> </p>
-  <p> <%= submit_tag "Log In" %> </p>
+  <p><%= label_tag :name, "Username", class: "label" %><%= text_field_tag :name %> </p>
+  <p><%= label_tag :password, "Password", class: "label" %><%= password_field_tag :password %> </p>
+  <p>g<%= submit_tag "Log In", class: "submit-button" %> </p>
 <% end %>
