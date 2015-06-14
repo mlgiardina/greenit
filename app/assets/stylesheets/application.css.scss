@@ -5,14 +5,26 @@ $small-username-color: #C7785D;
 $small-board-name-color: #72280F;
 $greenits-color: #1B6F12;
 $reddits-color: #8A1C21;
+$header-color: #0A4F2E;
 
 header {
-  p {
+  background: #0A4F2E;
+
+  .nav-user {
+
+    a {
     margin: 0 auto;
     padding-right: 15px;
     color: $main-link-color;
+    text-decoration: none;
     display: inline;
     float: right;
+
+      &:hover {
+        color: $main-hover-color;
+        text-decoration: none;
+      }
+    }
   }
 }
 
@@ -29,7 +41,7 @@ body {
   text-decoration: none;
   font-weight: 500;
   line-height: 1.1;
-  font-size: 36px;
+  font-size: 42px;
 
   &:hover {
     color: $main-hover-color;
@@ -57,10 +69,6 @@ nav {
   }
 }
 
-.main {
-  background: #0A4F2E;
-}
-
 .main-page {
   background: $main-background-color;
   margin: 0;
@@ -70,9 +78,16 @@ nav {
   h2 {
     margin-top: 0;
     padding-left: 5px;
-    padding-top: 5px;
-    color: #0A4F2E;
-    font-size: 30px;
+    padding-top: 10px;
+    color: $header-color;
+    font-size: 35px;
+  }
+
+  h3 {
+    padding-left: 5px;
+    padding-top: 10px;
+    color: $header-color;
+    font-size: 28px;
   }
 
   p {
@@ -83,12 +98,61 @@ nav {
 .main-link {
   color: #A06F31;
   text-decoration: none;
+  font-size: 25px;
 
   &:hover {
     color: #F1C997;
     text-decoration: none;
   }
 }
+
+.footer {
+    background: #0A4F2E;
+    margin: 0 auto;
+    min-height: 50px;
+}
+
+.greenits, .greenits > a {
+  color: $greenits-color;
+  font-weight: bolder;
+  text-decoration: none;
+
+  &:hover {
+    color: darken( $greenits-color, 10% )
+  }
+}
+
+.reddits, .reddits > a {
+  color: $reddits-color;
+  font-weight: bolder;
+  text-decoration: none;
+
+  &:hover {
+    color: lighten( $reddits-color, 15%)
+  }
+}
+.small-username {
+  color: $small-username-color;
+  text-decoration: none;
+
+  &:hover{
+    color: $small-board-name-color;
+    text-decoration: none;
+  }
+}
+
+.small-board-name {
+  color: $small-board-name-color;
+  text-decoration: none;
+
+  &:hover{
+    color: $small-username-color;
+    text-decoration: none;
+  }
+}
+
+
+
 @import 'bootstrap-sprockets';
 // @import 'bootstrap';
 @import 'links';

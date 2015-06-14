@@ -8,41 +8,42 @@
   <link rel="shortcut icon" href="greenit/public/favicon.ico" />
 </head>
 <body>
-  <header class="main">
-    <h1> <%= link_to "greenit", root_path, class: "logo" %> </h1>
-    <nav class="nav-link-separators">
-      |
-      <%= link_to "New Link", new_link_path, class: "nav-links" %>
-      |
-      <%= link_to "Boards", boards_path, class: "nav-links" %>
-      |
-      <%= link_to "Links", links_path, class: "nav-links" %>
-      |
-      <%= link_to "About", about_path, class: "nav-links" %>
-      |
-      <%= link_to "Sign Up", new_user_path, class: "nav-links" %>
-      |
-      <% if logged_in? %>
-        <%= link_to "Logout", logout_path, class: "nav-links" %>
-      <% else %>
-        <%= link_to "Login", login_path, class: "nav-links" %>
+  <div class="wrapper">
+    <header class="main">
+      <h1> <%= link_to "greenit", root_path, class: "logo" %> </h1>
+      <nav class="nav-link-separators">
+        |
+        <%= link_to "New Link", new_link_path, class: "nav-links" %>
+        |
+        <%= link_to "Boards", boards_path, class: "nav-links" %>
+        |
+        <%= link_to "Links", links_path, class: "nav-links" %>
+        |
+        <%= link_to "About", about_path, class: "nav-links" %>
+        |
+        <%= link_to "Sign Up", new_user_path, class: "nav-links" %>
+        |
+        <% if logged_in? %>
+          <%= link_to "Logout", logout_path, class: "nav-links" %>
+        <% else %>
+          <%= link_to "Login", login_path, class: "nav-links" %>
+        <% end %>
+        |
+      <% if @current_user %>
+        <span class="nav-user"><%= link_to @current_user.name, @current_user %></span></nav>
       <% end %>
-      |
-    <% if @current_user %>
-      <p class="nav-user"><%= "#{@current_user.name}" %></p></nav>
-    <% end %>
-  </header>
-  <div class='main-page'>
-    <% flash.each do |name, msg| %>
-      <%= content_tag(:div, msg, { class: "flash #{name}" }) %>
-    <% end %>
+    </header>
+    <div class='main-page'>
+      <% flash.each do |name, msg| %>
+        <%= content_tag(:div, msg, { class: "flash #{name}" }) %>
+      <% end %>
 
-<%= yield %>
+    <%= yield %>
 
+    </div>
+    <footer class="footer">
+      <%= params.inspect if Rails.env.development? %>
+    </footer>
   </div>
-  <footer>
-    <%= params.inspect if Rails.env.development? %>
-  </footer>
-
 </body>
 </html>

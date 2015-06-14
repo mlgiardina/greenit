@@ -1,8 +1,11 @@
 <article>
-  <p><%= @link.body %></p>
-  <small> by: <%= link_to @link.user.name, @link.user %>
+  <h2><%="#{@link.user.name}'s link "%></h2>
+  <p class="link-body"><%= @link.body %></p>
+  <small> by: <%= link_to @link.user.name, @link.user, class: "small-username" %>
   in
-  <%= link_to @link.board.name, @link.board %> </small>
+  <%= link_to @link.board.name, @link.board, class: "small-board-name" %>
+  on
+  <%= @link.created_at %> </small>
   <%= render 'shared/votes' %>
   <footer>
     <div class="actions">
@@ -17,26 +20,24 @@
 
 <section class="comments">
   <h3>Comments (<%= @comments.count %>) </h3>
-  <hr>
   <ul>
     <% @comments.each do |comment| %>
       <li>
-        <strong><%= comment.user.name %> </strong>:
-        <%= comment.body %>
+        <span class="small-username"><%= comment.user.name %> </span>:
+        <span class="comment-body"><%= comment.body %></span>
         |
-    <small><%= link_to "greenit:", { controller: "votes", action: "create", vote: { user_id: session[:user_id], comment_id: comment.id } }, method: "post" %>  <%= comment.votes.count %> </small>
+    <small><%= link_to "greenit:", { controller: "votes", action: "create", vote: { user_id: session[:user_id], comment_id: comment.id } }, method: "post", class: "greenits" %>  <%= comment.votes.count %> </small>
         |
-    <small> <%= link_to "reddit:", { controller: "downvotes", action: "create", downvote: { user_id: session[:user_id], comment_id: comment.id } }, method: "post" %> <%= comment.downvotes.count %> </small>
+    <small> <%= link_to "reddit:", { controller: "downvotes", action: "create", downvote: { user_id: session[:user_id], comment_id: comment.id } }, method: "post", class: "reddits" %> <%= comment.downvotes.count %> </small>
       </li>
     <% end %>
   </ul>
-  <hr>
-  <h4>Comment on this</h4>
+  <h3>Comment on this:</h3>
   <%= form_for(@comment) do |f| %>
     <%= f.hidden_field :link_id, value: @link.id %>
     <%= f.hidden_field :user_id, value: session[:user_id] %>
-    <p> <%= f.label :body%> <%= f.text_area :body %> </p>
-    <p> <%= f.submit "New Comment" %> </p>
+    <p><%= f.text_area :body, class: "comment-field" %> </p>
+    <p> <%= f.submit "Publish Comment", class: "submit-button" %> </p>
   <% end %>
 </section>
 

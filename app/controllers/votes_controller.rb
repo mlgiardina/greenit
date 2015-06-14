@@ -9,7 +9,7 @@ class VotesController < ApplicationController
     authenticate_user!
     @vote = Vote.new(vote_params)
     if @vote.save
-      flash[:success] = "greenit recorded"
+      flash[:success] = "greenit recorded."
       redirect_to :back
     else
       flash[:danger] = "Error Occurred"
