@@ -1,7 +1,6 @@
 // Place all the styles related to the Links controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-$footer-links-color: #0A4F2E;
 
 article {
   .link-body {
@@ -34,12 +33,5 @@ article {
     color: $text-body-color;
     margin: 5px;
   }
-
-  .comment-field {
-    width: 225px;
-    height: 135px;
-    margin-left: 10px;
-    background: $footer-links-color;
-    color: white;
-  }
 }
+

@@ -1,15 +1,9 @@
 <%= form_for(@link) do |f| %>
   <%= f.hidden_field :user_id, value: session[:user_id] %>
-  <fieldset>
-  <legend>Body</legend>
-  <%= f.text_field :body, placeholder: "www.nytimes.com"%>
-  </fieldset>
+  <p><%= f.label :body, "Body:", class: "label" %></p>
+  <p><%= f.text_area :body, class: "comment-field"%></p>
+  <p><%= f.label :board, "Board:", class: "label" %>
+  <%= f.select :board_id, Board.all.map { |board| [board.name, board.id] }, class: "drop-down" %></p>
 
-
-  <fieldset>
-  <legend>Board</legend>
-  <%= f.select :board_id, Board.all.map { |board| [board.name, board.id] } %>
-  </fieldset>
-
-  <p><%= f.submit "Publish Link" %></p>
+  <p><%= f.submit "Publish Link", class: "submit-button" %></p>
 <% end %>

@@ -7,6 +7,7 @@ $greenits-color: #1B6F12;
 $reddits-color: #8A1C21;
 $header-color: #0A4F2E;
 $text-body-color: #133857;
+$footer-links-color: #0A4F2E;
 
 header {
   background: #0A4F2E;
@@ -168,6 +169,25 @@ nav {
   margin-top: 10px;
 }
 
+.comment-field {
+    width: 225px;
+    height: 135px;
+    margin-left: 10px;
+    background: $footer-links-color;
+    color: white;
+  }
+
+.label {
+  color: $text-body-color;
+  margin-left: 5px;
+  font-weight: bold;
+}
+
+.drop-down {
+  background-color: $footer-links-color;
+  margin-left: 5px;
+  font-size: 20px;
+}
 @import 'bootstrap-sprockets';
 // @import 'bootstrap';
 @import 'links';
