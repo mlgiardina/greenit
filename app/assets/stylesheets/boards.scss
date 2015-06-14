@@ -1,3 +1,20 @@
 // Place all the styles related to the Boards controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.board-links {
+  margin-left: 10px;
+  font-size: 25px;
+
+  p {
+    color: #0A4F2E;
+  }
+
+  span {
+  }
+}
+
+.new-board-area {
+  margin-left: 10px;
+  background: $footer-links-color;
+  color: white;
+}
