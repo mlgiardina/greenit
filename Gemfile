@@ -14,6 +14,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'bourbon'
+
 group :development, :test do
   gem 'byebug'
 
