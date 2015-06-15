@@ -22,7 +22,8 @@ article {
      margin: 10px;
 
      &:hover {
-      color: darken($footer-links-color, 10%)
+      color: darken($footer-links-color, 10%);
+      @include transition(all 0.8s ease-in-out);
      }
     }
   }
