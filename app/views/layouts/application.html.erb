@@ -3,7 +3,6 @@
 <head>
   <title>greenit</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <link rel="shortcut icon" href="greenit/public/favicon.ico" />
 </head>
@@ -41,5 +40,6 @@
       <%= params.inspect if Rails.env.development? %><a href="https://matthew-giardina.herokuapp.com" class="nav-links"> Created by mlgiardina</a>
     </footer>
   </div>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>
 </html>

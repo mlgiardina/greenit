@@ -1,3 +1,4 @@
+/* globals $ */
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -13,3 +14,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require_tree .
+'use strict';
+
+$(document).ready(function () {
+  $('#board-header').on('click', function () {
+    $('.board-links').find('li').first().toggleClass('highlight');
+  });
+});

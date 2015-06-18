@@ -1,43 +1,47 @@
-<article>
-  <h2><%="#{@link.user.name}'s link "%></h2>
-  <p class="link-body"><%= @link.body %></p>
-  <small> by: <%= link_to @link.user.name, @link.user, class: "small-username" %>
-  in
-  <%= link_to @link.board.name, @link.board, class: "small-board-name" %>
-  on
-  <%= @link.created_at %> </small>
-  <%= render 'shared/votes' %>
-  <footer>
-    <div class="actions">
-      <%= link_to 'All Links', links_path %>
-      <% if @link.user_id == session[:user_id] %>
-        |
-        <%= link_to "Edit", edit_link_path(@link) %>
+<div class="link-show">
+  <article>
+    <h2><%="#{@link.user.name}'s link "%></h2>
+    <p class="link-body"><%= @link.body %></p>
+    <small> by: <%= link_to @link.user.name, @link.user, class: "small-username" %>
+    in
+    <%= link_to @link.board.name, @link.board, class: "small-board-name" %>
+    on
+    <%= @link.created_at %> </small>
+    <%= render 'shared/votes' %>
+    <footer>
+      <div class="actions">
+        <%= link_to 'All Links', links_path %>
+        <% if @link.user_id == session[:user_id] %>
+          |
+          <%= link_to "Edit", edit_link_path(@link) %>
+        <% end %>
+       </div>
+    </footer>
+  </article>
+
+  <section class="comments">
+    <h3>Comments (<%= @comments.count %>) </h3>
+    <ul>
+      <% @comments.each do |comment| %>
+        <li>
+          <%=link_to comment.user.name, comment.user, class: "small-username" %>:
+          <span class="comment-body"><%= comment.body %></span>
+          |
+      <small><%= link_to "greenit:", { controller: "votes", action: "create", vote: { user_id: session[:user_id], comment_id: comment.id } }, method: "post", class: "greenits" %>  <%= comment.votes.count %> </small>
+          |
+      <small> <%= link_to "reddit:", { controller: "downvotes", action: "create", downvote: { user_id: session[:user_id], comment_id: comment.id } }, method: "post", class: "reddits" %> <%= comment.downvotes.count %> </small>
+        </li>
       <% end %>
-     </div>
-  </footer>
-</article>
+    </ul>
+    </section>
 
-<section class="comments">
-  <h3>Comments (<%= @comments.count %>) </h3>
-  <ul>
-    <% @comments.each do |comment| %>
-      <li>
-        <%=link_to comment.user.name, comment.user, class: "small-username" %>:
-        <span class="comment-body"><%= comment.body %></span>
-        |
-    <small><%= link_to "greenit:", { controller: "votes", action: "create", vote: { user_id: session[:user_id], comment_id: comment.id } }, method: "post", class: "greenits" %>  <%= comment.votes.count %> </small>
-        |
-    <small> <%= link_to "reddit:", { controller: "downvotes", action: "create", downvote: { user_id: session[:user_id], comment_id: comment.id } }, method: "post", class: "reddits" %> <%= comment.downvotes.count %> </small>
-      </li>
+    <section class="new-comment">
+    <h3>Comment on this</h3>
+    <%= form_for(@comment) do |f| %>
+      <%= f.hidden_field :link_id, value: @link.id %>
+      <%= f.hidden_field :user_id, value: session[:user_id] %>
+      <p><%= f.text_area :body, class: "comment-field" %> </p>
+      <p> <%= f.submit "Publish Comment", class: "submit-button" %> </p>
     <% end %>
-  </ul>
-  <h3>Comment on this</h3>
-  <%= form_for(@comment) do |f| %>
-    <%= f.hidden_field :link_id, value: @link.id %>
-    <%= f.hidden_field :user_id, value: session[:user_id] %>
-    <p><%= f.text_area :body, class: "comment-field" %> </p>
-    <p> <%= f.submit "Publish Comment", class: "submit-button" %> </p>
-  <% end %>
-</section>
-
+  </section>
+</div>

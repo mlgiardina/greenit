@@ -1,7 +1,8 @@
 @import "neat-helpers";
 
 $grid-columns: 12;
-$visual-grid: true;
+$visual-grid: false;
 $visual-grid-color: gray;
 $visual-grid-index: front;
 $visual-grid-opacity: 0.3;
+$border-box-sizing: true;
